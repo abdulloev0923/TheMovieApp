@@ -89,10 +89,11 @@ if (newText != null) {
         viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
             viewModel.getSearch(query = newText).collectLatest {
 
-                moviesAdapter.submitData(it)
+                searchAdapter.submitData(it)
+                Log.e("qqqqqqqqqq", searchAdapter.toString())
                 rlMovies.apply {
                     layoutManager = LinearLayoutManager(requireContext())
-                    adapter = moviesAdapter.apply {
+                    adapter = searchAdapter.apply {
                         setOnItemClickListener {
                             val direction =
                                 MoviesFragmentDirections.actionMoviesFragmentToMovieDetailsFragment(
